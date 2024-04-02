@@ -22,6 +22,9 @@ import java.util.stream.Stream;
 @RequiredArgsConstructor
 public class AirportScheduler {
 
+    public static final int MIN_TTL = 10;
+    public static final int MAX_TTL = 100;
+
     private final RedisTemplate<String, Object> redisTemplate;
 
     private Map<Long, AirportDto> airportDtoMap;
@@ -43,7 +46,7 @@ public class AirportScheduler {
         long id = new Random().nextLong(1, 5);
         log.info("Id: {}", id);
         String key = String.valueOf(id);
-        long ttl = new Random().nextLong(10, 100);
+        long ttl = new Random().nextLong(MIN_TTL, MAX_TTL);
 
         //check key exist in cache
         if (Boolean.TRUE.equals(redisTemplate.hasKey(key))) {
