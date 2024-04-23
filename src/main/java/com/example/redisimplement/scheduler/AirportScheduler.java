@@ -17,8 +17,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Slf4j
-@RestController
-@RequestMapping("/api/v1/airport")
 @RequiredArgsConstructor
 public class AirportScheduler {
 
